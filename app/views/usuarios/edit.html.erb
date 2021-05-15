@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <!-- Metatags -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="Rodrigo Amaral">
+    <meta name="description" content="Site especializado para estudos de CRUD com usuários para a empresa TotalIP">
+    <title>ProjetoCRUD</title>
+
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+    <!-- Scripts -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    
+    <!-- CSS / JS locais-->
+    <link rel="stylesheet" href="../../assets/stylesheets/css/sheets.css">
+</head>
+
+<body>
+    <header class="navbar navbar-expand-lg fixed-top" style="background-color:#5A4272; opacity: 0.96; min-height: 3.3rem;">
+        <div id="header-navbar" class="content">
+
+            <a href=# id="logototal" class=icons><%= image_tag 'icons/totalip.png'%></a>
+            <div id="header-menu">
+                <a href="http://localhost:3000/usuarios">HOME</a> |
+                <a href="#">SOBRE</a> |
+                <a href="#">PORTFOLIO</a> |
+                <a href="#">CONTATO</a>
+            </div>
+            <div class="searchbox">
+                <div id="searchicon" class=icons><%= image_tag 'icons/search.png'%></div>
+                <input type="text" name="">
+            </div>
+        </div>
+    </header>
+
+    <div id="AtualizarUsuario" style="text-align: center; min-height: 2.5rem; background-color:#08374F;">
+        <a href="#"><%= image_tag 'titles/TituloAtualizarUsuarios'%></a>
+    </div>
+
+    <div style="padding: 1rem 0;">
+
+        <%=form_for(@usuario) do |f|%>
+            <div id="formularios" class="form-group" style="color:#08374F; min-height: 23rem; max-width: 650px; margin: auto; padding: 2rem 0;">
+                <p>
+                    <%= f.label :Nome_de_Usuário%><br>
+                    <%= f.text_field :nome, :class=>'form-control', placeholder: "Digite o nome de Usuário"%>
+                </p>
+
+                <div class="row form-group">
+                    <div class="col">
+                        <%= f.label :Data_de_Nascimento%>
+                        <%= f.text_field :datanascimento, :class=>'form-control', type:"date"%>
+                    </div>
+                    
+                    <div class="col">
+                        <%= f.label :CPF%>
+                        <%= f.text_field :cpf, :class=>'form-control', placeholder: "Digite o CPF do Usuário"%>
+                    </div>
+                </div>
+
+                <div style="margin-bottom: 1rem;">
+                    <%= f.label :Gênero%><br>
+                    <%= f.collection_select(:genero_id, Genero.all, :id, :gen, prompt: true, class:'form-control')%>
+                </div>
+
+                <div id="contatos">
+                        <%= f.fields_for :contatos do |contatos_fields|%>
+                        <%= render partial: "contato_fields", locals: { f: contatos_fields}%>
+                    <% end %>
+                    <div class="btn" style=" background-color: #08374F; margin-bottom: 2rem;">
+                        <%= link_to_add_association('Adicionar Telefone', f, :contatos)%> 
+                    </div>   
+                </div>
+
+                <div>
+                    <%= f.submit 'Atualizar Dados', class:"btn", style:"background-color: #F9B443"%>
+                </div>
+            
+            </div>
+            <% end %>
+        </div>
+    </div>
+
+    <footer style="color: white; text-align: center;">
+        <div id="menuObrigado" style="min-height: 2.5rem; background-color:#604978;">
+            <a href=""><%= image_tag 'titles/TituloObrigado.png'%></a>
+        </div>
+        <div style="background-color: #303031; padding: 1rem 0 0.1rem 0;">
+            <a href=# id="logototal" class=icons><%= image_tag 'icons/totalip.png'%></a>
+            <p style="padding-top: 0.5rem;">Desenvolvido por Rodrigo Vinícius Amaral</p>
+        </div>
+
+    </footer>
+
+</body>
+
+</html>

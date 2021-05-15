@@ -1,0 +1,24 @@
+body {
+    padding: 3.3rem 0 0 0;
+    font-family: 'Scada',sans-serif;
+}
+
+h2 {
+    font-size: 25px;
+    font-weight: 700;
+}
+
+h3 {
+    font-weight: 700;
+}
+
+#divisoria {
+    color:white;
+}
+
+.content {
+    margin: auto; 
+    width: 100%;
+    height: 100%;
+    max-width: 1000px;
+}

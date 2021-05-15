@@ -1,0 +1,20 @@
+
+<div class="nested-fields">
+    <div class="row form-group">
+        <div class="col field">
+            <%= f.label :tipo_de_Contato%><br>
+            <%= f.select :tipo, ["Residencial","Celular pessoal","Celular corporativo"]%>
+        </div>
+
+        <div class="col field">
+            <%= f.label :Número%><br>
+            <%= f.text_field :numero, :class=>'form-control', placeholder: "Digite o número",'data-mask': '(00)00000-0000'%>
+        </div>
+        
+        <div class="col field">
+            <div id="contatos" class="btn field" style="background-color: #08374F; margin-top: 1.9rem;">
+            <%= link_to_remove_association('Remover Contato', f)%>
+        </div>
+    </div>
+
+</div>

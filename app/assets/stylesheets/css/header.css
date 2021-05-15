@@ -1,0 +1,29 @@
+#header-navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+#header-menu {
+    color: white;
+}
+#header-menu a{
+    font-weight: 700;
+    color: white;
+}
+
+.searchbox {
+    padding: 0.2rem 0.30rem;
+    background-color: white;
+    border-radius: 1.5rem;
+    
+    display: flex;
+    align-items: center;
+}
+
+.searchbox input {
+    border: none;
+    outline: none;
+    font-size: 14px;
+    padding-left: 0.5rem;
+}
