@@ -2,26 +2,7 @@
 <html lang="pt-BR">
 
 <head>
-    <!-- Metatags -->
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="author" content="Rodrigo Amaral">
-    <meta name="description" content="Site especializado para estudos de CRUD com usuários para a empresa TotalIP">
-    <title>ProjetoCRUD</title>
-
-    <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@5.15.3/css/fontawesome.min.css">
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
-    <!-- Scripts -->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-    
-    <!-- CSS / JS locais-->
-    <link rel="stylesheet" href="../../assets/stylesheets/css/sheets.css">
+   
 </head>
 
 <body>
@@ -41,7 +22,7 @@
             </div>
         </div>
     </header>
-    
+
     <main>
         <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
             <ol class="carousel-indicators">
@@ -63,7 +44,7 @@
             <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
-                
+
             </a>
         </div>
     </main>
@@ -74,14 +55,14 @@
             <a href="#"><%= image_tag 'titles/TituloUsuarios.png'%></a>
             <div id="menuAbas" class="content" style= "padding-top: 0.5rem;">
                 <button id="abaCriar" type="button" class="abas" data-toggle="collapse" data-target="#collapseCriar" aria-expanded="false" aria-controls="collapseCriar">Criar Usuário</button> |
-                <button id="abaListar" class="abas"  data-toggle="collapse" data-target="#collapseListar" aria-expanded="false" aria-controls="collapseListar">Listar Usuários</button>   
+                <button id="abaListar" class="abas"  data-toggle="collapse" data-target="#collapseListar" aria-expanded="false" aria-controls="collapseListar">Listar Usuários</button>
             </div>
         </div>
 
         <div class="formContainer" style="color: white; font-weight: 700; min-height: 4rem;">
-            
+
             <div class="collapse" id="collapseCriar">
-                
+
                 <%=form_for(@usuario) do |f|%>
                     <div id="formularios" class="form-group" style="color:#08374F; max-width: 650px; margin: auto; padding: 2rem 0;">
                         <p>
@@ -94,25 +75,25 @@
                                 <%= f.label :Data_de_Nascimento%>
                                 <%= f.text_field :datanascimento, :class=>'form-control', type:"date"%>
                             </div>
-                            
+
                             <div class="col">
                                 <%= f.label :CPF%>
                                 <%= f.text_field :cpf, :class=>'form-control', placeholder: "Digite o CPF do Usuário",'data-mask': '000.000.000-00'%>
                             </div>
                         </div>
-                        
+
                         <div style="margin-bottom: 1rem;">
                             <%= f.label :Gênero%><br>
                             <%= f.collection_select(:genero_id, Genero.all, :id, :gen, prompt: true, class:'form-control')%>
                         </div>
-                       
+
                         <div id="contatos" class="btn" style=" background-color: #08374F">
                             <%= f.fields_for :contatos do |contatos_fields|%>
                                 <%= render partial: "contato_fields", locals: { f: contatos_fields}%>
                             <% end %>
-                            <%= link_to_add_association('Adicionar Telefone', f, :contatos)%>    
+                            <%= link_to_add_association('Adicionar Telefone', f, :contatos)%>
                         </div>
-                        
+
                         <div>
                             <%= f.submit 'Criar Usuário', class:"btn", style:"background-color: #F9B443"%>
                         </div>
@@ -152,7 +133,7 @@
                 </div>
             </div>
         </div>
-        
+
     </div>
 
     <footer style="text-align: center;">
